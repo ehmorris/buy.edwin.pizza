@@ -8,3 +8,21 @@ body {
 form {
   text-align: center;
 }
+
+h1 {
+  font-size: inherit;
+  font-weight: normal;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+}
+
+[data-targetable] {
+  display: none;
+}
+
+[data-targetable].showing {
+  display: block;
+}
