@@ -42,7 +42,7 @@ post "/charge_discount" do
       :description => "medium cheese — $12.00, cause I’m a cheap dick"
     )
   rescue Stripe::CardError => e
-    redirect "/failed.html"
+    redirect "/failed"
   end
 
   redirect "/"
