@@ -4,16 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=" name="viewport">
     <title>buy.edwin.pizza, please</title>
-    <style>
-      body {
-        padding: 1rem 35vw;
-        font: normal 1.2rem/1.45 sans-serif;
-      }
-
-      form {
-        text-align: center;
-      }
-    </style>
+    <link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <p>You know what to do</p>
@@ -21,7 +12,7 @@
       <script
         src="https://checkout.stripe.com/checkout.js"
         class="stripe-button"
-        data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+        data-key="<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>"
         data-name="buy.edwin.pizza"
         data-description="medium cheese — $15.00"
         data-amount="1500">
@@ -37,11 +28,11 @@
     <p>(ok so I was walking around my neighborhood and waiting to meet a friend for a late lunch. I was really hungry though and thought I’d slip a slice before we met up, so I go into the nearest pizza place which happened to by Vinny’s. I sit down to wait for my cheese slice and hear some aggressive yelling, then some old Italian couple comes in from the back. They must have been the owners because they were basically in pajamas and the guy says “bring this woman a slice, she wants a slice” and she says “your wife, I am your wife.” It was awkward because they had clearly just been in a fight and the seating area was very small, so it was just me and them sitting there quietly waiting for pizza. So tense. I’m never going there again, plus the pizza was average at best.)</p>
     <p><a href="#">I’m still not paying $15</a></p>
     <p>$12 is my final offer.</p>
-    <form action="/charge" method="POST">
+    <form action="/charge_discount" method="POST">
       <script
         src="https://checkout.stripe.com/checkout.js"
         class="stripe-button"
-        data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+        data-key="<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>"
         data-name="buy.edwin.pizza"
         data-description="medium cheese — $12.00, cause I’m a cheap dick"
         data-amount="1200">
