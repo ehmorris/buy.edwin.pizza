@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>buy.edwin.pizza, please</title>
+    <link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <%= yield %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+      $(document).on("click", "[data-target]", function() {
+        var target = $(this).data("target");
+        $("[data-targetable="+target+"]").addClass("showing");
+        return false;
+      });
+    </script>
+  </body>
+</html>
+

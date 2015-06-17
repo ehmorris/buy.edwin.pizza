@@ -7,11 +7,11 @@ set :public_folder, "public"
 Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
 
 get "/" do
-  erb :index
+  erb :index, :layout => :layout
 end
 
 get "/failed" do
-  erb :failed
+  erb :failed, :layout => :layout
 end
 
 post "/charge" do
