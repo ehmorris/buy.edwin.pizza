@@ -2,6 +2,8 @@
   <script
     src="https://checkout.stripe.com/checkout.js"
     class="stripe-button"
+    data-allow-remember-me="false"
+    data-label="Buy Edwin pizza, $15"
     data-key="<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>"
     data-name="buy.edwin.pizza"
     data-description="medium cheese — $15.00"

@@ -7,11 +7,15 @@ set :public_folder, "public"
 Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
 
 get "/" do
-  erb :index, :layout => :layout
+  erb :index
 end
 
 get "/failed" do
-  erb :failed, :layout => :layout
+  erb :failed
+end
+
+get "/success" do
+  erb :success
 end
 
 post "/charge" do
@@ -28,7 +32,7 @@ post "/charge" do
     redirect "/failed"
   end
 
-  redirect "/"
+  redirect "/success"
 end
 
 post "/charge_discount" do
@@ -45,5 +49,5 @@ post "/charge_discount" do
     redirect "/failed"
   end
 
-  redirect "/"
+  redirect "/success"
 end
