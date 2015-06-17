@@ -12,8 +12,13 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
       $(document).on("click", "[data-target]", function() {
-        var target = $(this).data("target");
-        $("[data-targetable="+target+"]").addClass("showing");
+        var $target_element = $("[data-targetable="+$(this).data("target")+"]");
+        var current_scroll_top = $(document).scrollTop();
+        var additional_scroll = $(window).height() / 6
+
+        $target_element.addClass("showing");
+        $(document).scrollTop(current_scroll_top + additional_scroll)
+
         return false;
       });
     </script>
