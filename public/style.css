@@ -1,5 +1,5 @@
 body {
-  font: normal 400 1.3rem/1.45 "Mercury SSm A", "Mercury SSm B";
+  font: normal 400 1.3rem/1.45 "Whitney SSm A", "Whitney SSm B";
   margin: 0 auto;
   max-width: 400px;
   padding: 1rem;
@@ -8,7 +8,7 @@ body {
 
 @media screen and (max-width: 400px) {
   body {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 }
 
