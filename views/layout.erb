@@ -18,11 +18,12 @@
 
       $(document).on("click", "[data-target]", function() {
         var $target_element = $("[data-targetable="+$(this).data("target")+"]");
-        var current_scroll_top = $(document).scrollTop();
-        var additional_scroll = $(window).height() / 6
+
+        if ($target_element.hasClass('showing')) return false;
 
         $target_element.addClass("showing");
-        $(document).scrollTop(current_scroll_top + additional_scroll)
+
+        $(document).scrollTop($(this).offset().top - 32);
 
         return false;
       });

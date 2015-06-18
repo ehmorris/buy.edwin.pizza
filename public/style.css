@@ -1,8 +1,8 @@
 body {
-  font: normal 400 1.3rem/1.45 "Whitney SSm A", "Whitney SSm B";
+  font: normal 400 1.25rem/1.45 "Whitney SSm A", "Whitney SSm B";
   margin: 0 auto;
   max-width: 400px;
-  padding: 1rem;
+  padding: 1rem calc(14vw + 1rem) 1rem 1rem;
   text-rendering: optimizeLegibility;
 }
 
@@ -12,19 +12,40 @@ body {
   }
 }
 
-form {
-  text-align: center;
-}
-
 h1 {
   font-size: inherit;
   font-weight: normal;
-  text-align: center;
 }
 
 a {
+  border-bottom: 1px solid #1275ff;
   color: #1275ff;
-  padding: .5em 0;
+  padding: .5em 0 .05em;
+  text-decoration: none;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.response {
+  margin-right: -14vw;
+  overflow: auto;
+}
+
+[data-target] {
+  animation: fade-up .3s ease both;
+  animation-delay: 1s;
+  float: right;
+  text-align: right;
 }
 
 [data-targetable] {
