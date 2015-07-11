@@ -16,16 +16,16 @@
       
       FastClick.attach(document.body);
 
-      $(document).on("click", "[data-target]", function() {
+      $(document).on("click", "[data-target]", function(e) {
         var $target_element = $("[data-targetable="+$(this).data("target")+"]");
 
         if ($target_element.hasClass('showing')) return false;
 
-        $target_element.addClass("showing");
+        $target_element.addClass("show");
 
         $(document).scrollTop($(this).offset().top - 32);
 
-        return false;
+        e.preventDefault();
       });
     </script>
   </body>
