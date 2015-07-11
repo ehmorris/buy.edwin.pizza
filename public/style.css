@@ -46,6 +46,10 @@ a {
   text-align: right;
 }
 
-[data-targetable]:not(.show) {
+[data-targetable] {
   display: none;
+}
+
+[data-targetable].show {
+  display: block;
 }

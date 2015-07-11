@@ -16,7 +16,7 @@
       
       FastClick.attach(document.body);
 
-      $(document).on("click", "[data-target]", function(e) {
+      $(document).on("click", "[data-target]", function() {
         var $target_element = $("[data-targetable="+$(this).data("target")+"]");
 
         if ($target_element.hasClass('showing')) return false;
@@ -25,7 +25,7 @@
 
         $(document).scrollTop($(this).offset().top - 32);
 
-        e.preventDefault();
+        return false;
       });
     </script>
   </body>
