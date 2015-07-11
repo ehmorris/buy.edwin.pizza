@@ -37,13 +37,13 @@ a {
 }
 
 .response {
+  animation: fade-up .3s ease both;
+  animation-delay: .5s;
   margin-right: -14vw;
   overflow: auto;
 }
 
 [data-target] {
-  animation: fade-up .3s ease both;
-  animation-delay: 1s;
   float: right;
   text-align: right;
 }
