@@ -47,7 +47,7 @@ a {
 [data-targetable].show { display: block; }
 
 .hall_of_fame {
-
+  display: none;
 }
 
 .hall_of_fame-famer {
