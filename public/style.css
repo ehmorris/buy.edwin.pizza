@@ -1,15 +1,24 @@
 body {
   font: normal 400 1.25rem/1.45 "Whitney SSm A", "Whitney SSm B";
   margin: 0 auto;
-  max-width: 400px;
-  padding: 1rem calc(14vw + 1rem) 1rem 1rem;
+  max-width: 600px;
+  padding: 1rem;
   text-rendering: optimizeLegibility;
 }
 
 @media screen and (max-width: 400px) {
-  body {
-    font-size: 1.05rem;
-  }
+  body { font-size: 1.05rem; }
+}
+
+a {
+  border-bottom: 1px solid #1275ff;
+  color: #1275ff;
+  padding: .5em 0 .05em;
+  text-decoration: none;
+}
+
+.conversation {
+  padding-right: calc(14vw);
 }
 
 @keyframes fade-up {
@@ -24,30 +33,43 @@ body {
   }
 }
 
-.response {
+.conversation-response {
   animation: fade-up .3s ease both;
   animation-delay: .5s;
   margin-right: -14vw;
   overflow: auto;
   padding: 0 0 .1em;
-}
-
-a {
-  border-bottom: 1px solid #1275ff;
-  color: #1275ff;
-  padding: .5em 0 .05em;
-  text-decoration: none;
-}
-
-[data-target] {
-  float: right;
   text-align: right;
 }
 
-[data-targetable] {
+[data-targetable] { display: none; }
+
+[data-targetable].show { display: block; }
+
+.hall_of_fame {
   display: none;
 }
 
-[data-targetable].show {
-  display: block;
+.hall_of_fame-famer {
+
+}
+
+.hall_of_fame-famer--pending {
+
+}
+
+.famer-name {
+
+}
+
+.famer-timeline {
+
+}
+
+.famer-video {
+
+}
+
+.famer-main {
+
 }
