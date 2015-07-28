@@ -1,0 +1,2 @@
+FastClick.attach(document.body);
+

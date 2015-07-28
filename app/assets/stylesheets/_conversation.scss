@@ -1,0 +1,24 @@
+.conversation {
+  padding-right: calc(14vw);
+}
+
+@include keyframes(fade-up) {
+  0% {
+    opacity: 0;
+    @include transform(translateY(1rem));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(translateY(0));
+  }
+}
+
+.conversation-response {
+  @include animation(fade-up .3s ease both);
+  @include animation-delay(.5s);
+  margin-right: -14vw;
+  overflow: auto;
+  padding: 0 0 .1em;
+  text-align: right;
+}
