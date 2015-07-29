@@ -1,0 +1,12 @@
+.conversation {
+  padding-right: calc(14vw);
+}
+
+.conversation-response {
+  @include animation(fade-up .3s ease both);
+  @include animation-delay(.5s);
+  margin-right: -14vw;
+  overflow: auto;
+  padding: 0 0 .1em;
+  text-align: right;
+}

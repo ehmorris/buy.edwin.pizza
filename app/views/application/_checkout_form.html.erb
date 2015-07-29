@@ -1,12 +1,15 @@
 <form action="/charge" method="POST">
+  <input type="hidden" name="price" value="<%= price %>" />
+  <input type="hidden" name="description" value="<%= desc %>">
+
   <script
     src="https://checkout.stripe.com/checkout.js"
     class="stripe-button"
     data-allow-remember-me="false"
-    data-label="Buy Edwin pizza, $15"
+    data-label="<%= form_label %>"
     data-key="<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>"
     data-name="buy.edwin.pizza"
-    data-description="medium cheese — $15.00"
-    data-amount="1500">
+    data-description="<%= desc %>"
+    data-amount="<%= price %>">
   </script>
 </form>

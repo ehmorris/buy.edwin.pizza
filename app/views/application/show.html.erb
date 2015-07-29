@@ -1,6 +1,6 @@
 <div class="conversation">
   <p>You know what to do</p>
-  <%= erb :'_checkout_form' %>
+  <%= render partial: "checkout_form", locals: { price: @price, form_label: "buy edwin pizza, $#{@price/100}", desc: "medium cheese — $#{@price/100}" } %>
 
   <p class="conversation-response"><a href="#" data-target="domain_cost">Nah i’m not paying $15</a></p>
   <div data-targetable="domain_cost">
@@ -27,6 +27,6 @@
 
   <div data-targetable="final_offer">
     <p>$12 is my final offer.</p>
-    <%= erb :'_checkout_form_discount' %>
+    <%= render partial: "checkout_form", locals: { price: @discount_price, form_label: "buy edwin some cheap discount pizza", desc: "medium cheese — $#{@discount_price/100}, cause I’m cheap" } %>
   </div>
 </div>
