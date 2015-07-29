@@ -1,8 +1,8 @@
 development:
-  adapter: sqlite3
+  adapter: postgresql
   pool: 5
   timeout: 5000
-  database: db/development.sqlite3
+  database: buy_edwin_pizza_database_development
 
 production:
   adapter: postgresql

@@ -7,12 +7,5 @@ gem "jquery-rails"
 gem "stripe"
 gem "foreman"
 gem "bourbon"
-
-group :development do
-  gem "sqlite3"
-end
-
-group :production do
-  gem "pg"
-  gem "le"
-end
+gem "pg"
+gem "le"
