@@ -1,3 +1,4 @@
+ruby "2.2.1"
 source "https://rubygems.org"
 
 gem "rails", "4.2.0"
@@ -9,3 +10,4 @@ gem "foreman"
 gem "bourbon"
 gem "pg"
 gem "le"
+gem "rails_12factor"
