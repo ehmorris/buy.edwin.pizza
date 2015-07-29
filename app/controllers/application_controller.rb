@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     price = params[:price]
 
     unless price.to_i == PRICE || price.to_i == DISCOUNT_PRICE
-      render '_failure'
+      render "_failure"
       return
     end
 
@@ -28,10 +28,10 @@ class ApplicationController < ActionController::Base
         :description => description
       )
     rescue Stripe::CardError => e
-      render '_failure'
+      render "_failure"
       return
     end
 
-    render '_success'
+    render "_success"
   end
 end
