@@ -1,3 +1,5 @@
+<%= render partial: "video_background" unless browser.mobile? %>
+
 <div class="conversation">
   <p>You know what to do</p>
   <%= render partial: "checkout_form", locals: { price: @price, form_label: "buy edwin pizza, $#{@price/100}", desc: "medium cheese — $#{@price/100}" } %>
