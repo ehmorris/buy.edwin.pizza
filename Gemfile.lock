@@ -40,6 +40,7 @@ GEM
     bourbon (4.2.3)
       sass (~> 3.4)
       thor
+    browser (0.9.1)
     builder (3.2.2)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
@@ -139,6 +140,7 @@ PLATFORMS
 
 DEPENDENCIES
   bourbon
+  browser
   foreman
   jquery-rails
   le
