@@ -1,1 +1,3 @@
-$(".famer-video").fitVids();
+$(function() {
+  $(".famer-video").fitVids();
+});
