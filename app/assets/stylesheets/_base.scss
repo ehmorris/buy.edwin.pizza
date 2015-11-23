@@ -1,12 +1,12 @@
 body {
   font: normal 400 1.25rem/1.45 "Whitney SSm A", "Whitney SSm B";
-  margin: 0 auto;
-  max-width: 600px;
-  padding: 1rem;
+  margin: 0;
+  padding: 0;
   text-rendering: optimizeLegibility;
 
   @include if_narrower_than(400px) {
     font-size: 1.05rem;
+    line-height: 1.35;
   }
 }
 
