@@ -8,10 +8,21 @@
 
 .famer-video {
   background: #ccc;
+  margin: 0 -8vw;
+
+  @include if_narrower_than(600px) {
+    margin: 0 -1rem;
+  }  
 }
 
 .famer-main {
   img {
     max-width: 100%;
+  }
+
+  small {
+    color: #444;
+    font-size: .8em;
+    font-style: italic;
   }
 }

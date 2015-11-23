@@ -6,6 +6,7 @@ body {
 
   @include if_narrower_than(400px) {
     font-size: 1.05rem;
+    line-height: 1.35;
   }
 }
 
