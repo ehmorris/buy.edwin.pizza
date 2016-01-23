@@ -1,21 +1,33 @@
 .famer {
-  margin: 4rem 0;
+  margin: 6rem 0;
+  position: relative;
 }
 
 .famer-name {
-  font-weight: bold;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  margin-left: -0.25em;
+  position: relative;
+  z-index: 1;
 }
 
 .famer-video {
-  background: #ccc;
-  margin: 0 -8vw;
-
-  @include if_narrower_than(600px) {
-    margin: 0 -1rem;
-  }  
+  @include filter(grayscale(100%));
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  width: 68vw;
+  z-index: 0;
 }
 
 .famer-main {
+  margin: 0 10vw;
+  position: relative;
+  width: 35vw;
+  z-index: 1;
+
   img {
     max-width: 100%;
   }

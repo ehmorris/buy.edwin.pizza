@@ -3,17 +3,12 @@ body {
   margin: 0;
   padding: 0;
   text-rendering: optimizeLegibility;
-
-  @include if_narrower_than(400px) {
-    font-size: 1.05rem;
-    line-height: 1.35;
-  }
 }
 
 a {
   border-bottom: 1px solid $link_color;
   color: $link_color;
-  padding: .5em 0 .05em;
+  padding-bottom: .05em;
   text-decoration: none;
 }
 
