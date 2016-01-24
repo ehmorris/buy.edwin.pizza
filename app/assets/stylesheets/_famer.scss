@@ -37,7 +37,16 @@
   z-index: 1;
 
   img {
+    @include transform-origin(left center);
+    @include transition(all .2s);
+    display: block;
     max-width: 100%;
+
+    &:hover {
+      @include transform(scale(2));
+      box-shadow: 0 .5em 1em rgba(0, 0, 0, .4);
+      cursor: zoom-in;
+    }
   }
 
   small {
