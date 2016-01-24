@@ -1,4 +1,6 @@
 body {
+  background: #000;
+  color: #fff;
   font: normal 400 1.5rem/1.45 "Mercury SSm A", "Mercury SSm B";
   margin: 0;
   padding: 0;
@@ -6,8 +8,8 @@ body {
 }
 
 a {
-  border-bottom: 1px solid $link_color;
-  color: $link_color;
+  border-bottom: 1px solid #fff;
+  color: #fff;
   padding-bottom: .05em;
   text-decoration: none;
 }

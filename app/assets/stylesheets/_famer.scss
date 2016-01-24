@@ -21,7 +21,6 @@
 }
 
 .famer-video {
-  @include filter(grayscale(100%));
   width: 70vw;
 }
 
@@ -42,7 +41,7 @@
   }
 
   small {
-    color: #444;
+    color: #eee;
     display: inline-block;
     font-size: .8em;
     font-style: italic;
