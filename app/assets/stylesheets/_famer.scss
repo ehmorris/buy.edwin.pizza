@@ -1,27 +1,77 @@
 .famer {
-  margin: 4rem 0;
+  margin: 6rem 0;
+  position: relative;
 }
 
 .famer-name {
-  font-weight: bold;
+  font-size: 9vw;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  margin-left: -0.3em;
+  position: relative;
+  z-index: 1;
+}
+
+.famer-video_wrapper {
+  position: absolute;
+  right: 0;
+  top: 4rem;
+  z-index: 0;
+
+  @include if_narrower_than($column_layout_breakpoint) {
+    padding-top: 50vh;
+    top: 0;
+    z-index: 2;
+  } 
 }
 
 .famer-video {
-  background: #ccc;
-  margin: 0 -8vw;
+  width: 70vw;
+}
 
-  @include if_narrower_than(600px) {
-    margin: 0 -1rem;
+.famer-video--docked {
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  @include if_narrower_than($column_layout_breakpoint) {
+    top: 50vh;
   }  
 }
 
 .famer-main {
+  margin: 0 10vw;
+  position: relative;
+  z-index: 1;
+
+  @include if_narrower_than($column_layout_breakpoint) {
+    margin: 0 1rem;
+  }
+
+  @include if_wider_than($column_layout_breakpoint) {
+    width: 35vw;
+  }  
+
   img {
+    display: block;
     max-width: 100%;
+
+    @include if_wider_than($column_layout_breakpoint) {
+      @include transform-origin(left center);
+      @include transition(all .2s);
+      
+      &:hover {
+        @include transform(scale(2));
+        box-shadow: 0 .5em 1em rgba(0, 0, 0, .4);
+        cursor: zoom-in;
+      }
+    }
   }
 
   small {
-    color: #444;
+    color: #eee;
+    display: inline-block;
     font-size: .8em;
     font-style: italic;
   }

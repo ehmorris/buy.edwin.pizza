@@ -1,12 +1,11 @@
 @import "bourbon";
 
-@import "helpers/colors";
 @import "helpers/media_queries";
+@import "helpers/breakpoints";
 @import "helpers/keyframes";
 
 @import "base";
 @import "conversation";
-@import "hall_of_fame";
 @import "famer";
 @import "targetable";
 @import "video_background";
