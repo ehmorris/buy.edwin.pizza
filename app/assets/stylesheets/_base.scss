@@ -5,6 +5,10 @@ body {
   margin: 0;
   padding: 0;
   text-rendering: optimizeLegibility;
+
+  @include if_narrower_than($column_layout_breakpoint) {
+    font-size: 1.2rem;
+  }  
 }
 
 a {

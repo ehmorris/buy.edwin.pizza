@@ -8,7 +8,7 @@
   font-weight: 700;
   line-height: 1;
   margin: 0;
-  margin-left: -0.25em;
+  margin-left: -0.3em;
   position: relative;
   z-index: 1;
 }
@@ -18,6 +18,12 @@
   right: 0;
   top: 4rem;
   z-index: 0;
+
+  @include if_narrower_than($column_layout_breakpoint) {
+    padding-top: 50vh;
+    top: 0;
+    z-index: 2;
+  } 
 }
 
 .famer-video {
@@ -28,24 +34,38 @@
   position: fixed;
   right: 0;
   top: 0;
+
+  @include if_narrower_than($column_layout_breakpoint) {
+    top: 50vh;
+  }  
 }
 
 .famer-main {
   margin: 0 10vw;
   position: relative;
-  width: 35vw;
   z-index: 1;
 
+  @include if_narrower_than($column_layout_breakpoint) {
+    margin: 0 1rem;
+  }
+
+  @include if_wider_than($column_layout_breakpoint) {
+    width: 35vw;
+  }  
+
   img {
-    @include transform-origin(left center);
-    @include transition(all .2s);
     display: block;
     max-width: 100%;
 
-    &:hover {
-      @include transform(scale(2));
-      box-shadow: 0 .5em 1em rgba(0, 0, 0, .4);
-      cursor: zoom-in;
+    @include if_wider_than($column_layout_breakpoint) {
+      @include transform-origin(left center);
+      @include transition(all .2s);
+      
+      &:hover {
+        @include transform(scale(2));
+        box-shadow: 0 .5em 1em rgba(0, 0, 0, .4);
+        cursor: zoom-in;
+      }
     }
   }
 
