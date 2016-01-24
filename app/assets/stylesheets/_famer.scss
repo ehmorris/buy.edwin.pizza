@@ -13,22 +13,25 @@
   z-index: 1;
 }
 
-.famer-video_wrapper {
+.famer-video {
+  @include filter(grayscale(100%));
   position: absolute;
   right: 0;
   top: 2.5rem;
+  width: 70vw;
   z-index: 0;
 }
 
-.famer-video {
-  @include filter(grayscale(100%));
-  width: 70vw;
-}
-
-.famer-video--docked {
+.stickit {
   position: fixed;
   right: 0;
   top: 0;
+}
+
+.stickit-end {
+  bottom: 0;
+  position: absolute;
+  right: 0;
 }
 
 .famer-main {
