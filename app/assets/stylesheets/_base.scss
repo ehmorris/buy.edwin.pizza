@@ -1,15 +1,17 @@
 body {
   background: #000;
   color: #fff;
-  font: normal 400 1.5rem/1.45 "Mercury SSm A", "Mercury SSm B";
+  font: normal 400 1.8vw/1.45 "Mercury SSm A", "Mercury SSm B";
   margin: 0;
   padding: 0;
   text-rendering: optimizeLegibility;
 
-  @include if_narrower_than($column_layout_breakpoint) {
+  @include if_narrower_than(1000px) {
     font-size: 1.2rem;
-  }  
+  }
 }
+
+p { margin: 1em 0; }
 
 a {
   border-bottom: 1px solid #fff;

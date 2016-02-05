@@ -55,6 +55,7 @@
 
   img {
     display: block;
+    margin: 1em 0;
     max-width: 100%;
 
     @include if_wider_than($column_layout_breakpoint) {
@@ -67,6 +68,11 @@
         cursor: zoom-in;
       }
     }
+  }
+
+  iframe {
+    display: block;
+    margin: 1em 0;
   }
 
   small {
