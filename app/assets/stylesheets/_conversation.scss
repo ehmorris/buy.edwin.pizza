@@ -5,9 +5,15 @@
 
 .conversation {
   box-sizing: border-box;
-  padding: 0 calc(14vw + 1rem) 1rem 1rem;
+  padding: 0 1rem;
   margin: 0 auto;
-  max-width: 600px;
+
+  @include if_wider_than(500px) { max-width: 65vw; }
+
+  @include if_narrower_than(500px) {
+    font-size: 1rem;
+    padding: 0 calc(1rem + 14vw) 1rem 1rem;
+  }
 }
 
 .conversation-pair {
