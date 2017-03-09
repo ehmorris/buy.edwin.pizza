@@ -8,6 +8,5 @@ gem 'jquery-rails'
 
 gem 'stripe'
 gem 'foreman'
-gem 'bourbon'
 gem 'browser'
 gem 'rails_12factor'

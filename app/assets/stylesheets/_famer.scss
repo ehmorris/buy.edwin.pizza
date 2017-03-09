@@ -1,3 +1,7 @@
+@import 'helpers/media_queries';
+
+$column_layout_breakpoint: 700px;
+
 .famer {
   margin: 6rem 0;
   position: relative;
@@ -23,7 +27,7 @@
     padding-top: 50vh;
     top: 0;
     z-index: 2;
-  } 
+  }
 }
 
 .famer-video {
@@ -37,7 +41,7 @@
 
   @include if_narrower_than($column_layout_breakpoint) {
     top: 50vh;
-  }  
+  }
 }
 
 .famer-main {
@@ -51,7 +55,7 @@
 
   @include if_wider_than($column_layout_breakpoint) {
     width: 35vw;
-  }  
+  }
 
   img {
     display: block;
@@ -59,11 +63,11 @@
     max-width: 100%;
 
     @include if_wider_than($column_layout_breakpoint) {
-      @include transform-origin(left center);
-      @include transition(all .2s);
-      
+      transform-origin: left center;
+      transition: all .2s;
+
       &:hover {
-        @include transform(scale(2));
+        transform: scale(2);
         box-shadow: 0 .5em 1em rgba(0, 0, 0, .4);
         cursor: zoom-in;
       }

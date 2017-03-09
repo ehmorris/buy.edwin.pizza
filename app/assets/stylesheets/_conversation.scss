@@ -1,3 +1,17 @@
+@import 'helpers/media_queries';
+
+@keyframes fade_up {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .conversation_pane {
   height: 75vh;
   width: 100%;
@@ -21,8 +35,8 @@
 }
 
 .conversation-response {
-  @include animation(fade-up .3s ease both);
-  @include animation-delay(.5s);
+  animation: fade_up .3s ease both;
+  animation-delay: .5s;
   margin-right: -14vw;
   overflow: auto;
   padding-bottom: .1em;
