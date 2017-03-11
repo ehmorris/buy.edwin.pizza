@@ -1,5 +1,3 @@
-@import 'helpers/media_queries';
-
 @keyframes fade_up {
   0% {
     opacity: 0;
@@ -12,33 +10,36 @@
   }
 }
 
-.conversation_pane {
-  height: 75vh;
+.conversation {
+  height: 100vh;
+  position: relative;
   width: 100%;
 }
 
-.conversation {
+.conversation-pair {
+  background: #000;
   box-sizing: border-box;
-  padding: 0 1rem;
-  margin: 0 auto;
-
-  @include if_wider_than(500px) { max-width: 65vw; }
-
-  @include if_narrower_than(500px) {
-    font-size: 1rem;
-    padding: 0 calc(1rem + 14vw) 1rem 1rem;
-  }
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  left: 0;
+  padding: 2rem 2.5rem 4rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
-.conversation-pair {
-  margin: 2rem 0;
+.conversation-pair--light {
+  background: #fff;
+  color: #000;
 }
 
 .conversation-response {
   animation: fade_up .3s ease both;
   animation-delay: .5s;
-  margin-right: -14vw;
-  overflow: auto;
-  padding-bottom: .1em;
-  text-align: right;
+  margin: 0;
+  padding: 3rem 0;
 }
+
+.conversation-response-link { text-decoration: underline; }
