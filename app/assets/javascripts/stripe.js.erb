@@ -1,0 +1,21 @@
+$(function() {
+  var handler = StripeCheckout.configure({
+    key: '<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>',
+    locale: 'auto',
+    token: function(token) {
+      // You can access the token ID with `token.id`.
+      // Get the token ID to your server-side code for use.
+    }
+  });
+
+  $('[data-purchase-button]').on('click', function(e) {
+    var button_data = $(this).data();
+
+    handler.open({
+      name: 'buy.edwin.pizza',
+      label: button_data.formLabel,
+      description: button_data.desc,
+      amount: button_data.price
+    });
+  });
+});

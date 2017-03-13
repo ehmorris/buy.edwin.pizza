@@ -2,7 +2,14 @@
   <div slide class="conversation-pair">
     <div>
       <p>You know what to do</p>
-      <%= render partial: "checkout_form", locals: { price: @price, form_label: "buy edwin pizza, $#{@price/100}", desc: "medium cheese — $#{@price/100}" } %>
+      <div
+        data-purchase-button
+        data-price="<%= @price %>"
+        data-desc="<%= "medium cheese — $#{@price/100}" %>"
+        data-form-label="<%= "buy edwin pizza, $#{@price/100}" %>"
+      >
+        <img src="https://placehold.it/250x250" />
+      </div>
     </div>
     <div>
       <p class="conversation-response" open-next-slide lock-body-scrolling><span class="conversation-response-link">Nah i’m not paying $15</span></p>
@@ -58,9 +65,14 @@
     <div>
       <p>First let’s both acknowledge that you didn’t read that.</p>
       <p>My final offer is $12.</p>
-    </div>
-    <div>
-      <%= render partial: "checkout_form", locals: { price: @discount_price, form_label: "buy edwin some cheap discount pizza", desc: "medium cheese — $#{@discount_price/100}, cause I’m cheap" } %>
+      <div
+        data-purchase-button
+        data-price="<%= @discount_price %>"
+        data-desc="<%= "medium cheese — $#{@discount_price/100}" %>"
+        data-form-label="<%= "buy edwin some cheap discount pizza" %>"
+      >
+        <img src="https://placehold.it/250x250" />
+      </div>
     </div>
   </div>
 </div>
