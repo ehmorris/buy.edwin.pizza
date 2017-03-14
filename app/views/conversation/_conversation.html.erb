@@ -5,7 +5,7 @@
       <div
         data-purchase-button
         data-price="<%= @price %>"
-        data-desc="<%= "medium cheese — $#{@price/100}" %>"
+        data-desc="<%= @price_desc %>"
       >
         <img src="https://placehold.it/250x250" />
       </div>
@@ -66,8 +66,9 @@
       <p>My final offer is $12.</p>
       <div
         data-purchase-button
+        data-purchase-button-discount
         data-price="<%= @discount_price %>"
-        data-desc="<%= "medium cheese — $#{@discount_price/100}" %>"
+        data-desc="<%= @discount_price_desc %>"
       >
         <img src="https://placehold.it/250x250" />
       </div>

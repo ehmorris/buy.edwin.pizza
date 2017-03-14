@@ -1,19 +1,28 @@
 $(function() {
+  var discount = false;
+
   var handler = StripeCheckout.configure({
     locale: 'auto',
     key: '<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>',
     token: function(token) {
-      // post to /charge with token, price, stripeToken, and description
+      $.ajax({
+        type: "POST",
+        url: "/charge",
+        dataType: 'json',
+        data: { 'stripeToken': token.id, 'discount': discount }
+      });
     }
   });
 
-  $('[data-purchase-button]').on('click', function(e) {
-    var button_data = $(this).data();
+  $('[data-purchase-button]').on('click', function() {
+    var checkout_button_data = $(this).data();
+
+    discount = $(this).attr('data-purchase-button-discount');
 
     handler.open({
       name: 'buy.edwin.pizza',
-      description: button_data.desc,
-      amount: button_data.price,
+      description: checkout_button_data.desc,
+      amount: checkout_button_data.price,
       allowRememberMe: false
     });
   });
