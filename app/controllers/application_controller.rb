@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
     @discount_price_desc = DISCOUNT_PRICE_DESC
   end
 
+  def success
+  end
+
+  def failure
+  end
+
   def charge
     Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
     token = params[:stripeToken]
@@ -24,10 +30,10 @@ class ApplicationController < ActionController::Base
         :description => discount ? DISCOUNT_PRICE_DESC : PRICE_DESC
       )
     rescue Stripe::CardError => e
-      render "_failure"
+      redirect_to failure_path
       return
     end
 
-    render "_success"
+    redirect_to success_path
   end
 end
