@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
         :source => token,
         :description => discount ? DISCOUNT_PRICE_DESC : PRICE_DESC
       )
-    rescue Stripe::CardError => e
+    rescue Stripe::CardError => _
       redirect_to failure_path
       return
     end
