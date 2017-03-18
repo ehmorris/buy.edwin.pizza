@@ -18,16 +18,15 @@
 
 .conversation-pair {
   background: #000;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
   left: 0;
-  padding: 2rem 2.5rem 4rem;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
   position: absolute;
   top: 0;
-  width: 100%;
 }
 
 .conversation-pair--light {

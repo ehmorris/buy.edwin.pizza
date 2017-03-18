@@ -1,0 +1,76 @@
+@import 'imports/color_variables';
+
+@mixin border_gradient($rotation: 0deg) {
+  border-style: solid;
+  border-width: 1rem;
+  border-image: linear-gradient(
+    $rotation,
+    $color_pizza_1,
+    $color_pizza_2,
+    $color_pizza_3,
+    $color_pizza_4,
+    $color_pizza_5,
+    $color_pizza_6,
+    $color_pizza_7
+  ) 10;
+}
+
+@keyframes cycle_opacity {
+  0%, 75%, 100% { opacity: 0; }
+  25% { opacity: 1; }
+}
+
+@keyframes frenetic_movement {
+  0%, 10% { transform: translate3d(-20%, -30%, 0) scale(.2); }
+  10%, 20% { transform: translate3d(-30%, 0%, 0) scale(.4); }
+  20%, 30% { transform: translate3d(-10%, 30%, 0) scale(.3); }
+  30%, 40% { transform: translate3d(-60%, -30%, 0) scale(.6); }
+  40%, 50% { transform: translate3d(50%, 50%, 0) scale(.8); }
+  50%, 60% { transform: translate3d(-10%, 30%, 0) scale(.3); }
+  60%, 70% { transform: translate3d(-30%, 0%, 0) scale(.2); }
+  70%, 80% { transform: translate3d(-20%, -30%, 0) scale(.4); }
+  80%, 90% { transform: translate3d(20%, 30%, 0) scale(.8); }
+  90%, 100% { transform: translate3d(0%, 0%, 0) scale(1); }
+}
+
+.rotating_gradient_border {
+  animation: frenetic_movement 1.5s;
+  height: calc(100% - 2rem);
+  left: 1rem;
+  position: absolute;
+  top: 1rem;
+  width: calc(100% - 2rem);
+  z-index: -1;
+}
+
+.rotating_gradient_border-gradient_state {
+  box-sizing: border-box;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.rotating_gradient_border-gradient_state--1 {
+  @include border_gradient;
+  z-index: 1;
+}
+
+.rotating_gradient_border-gradient_state--2 {
+  @include border_gradient(90deg);
+  animation: cycle_opacity .5s .125s infinite both;
+  z-index: 2;
+}
+
+.rotating_gradient_border-gradient_state--3 {
+  @include border_gradient(180deg);
+  animation: cycle_opacity .5s .25s infinite both;
+  z-index: 3;
+}
+
+.rotating_gradient_border-gradient_state--4 {
+  @include border_gradient(270deg);
+  animation: cycle_opacity .5s .375s infinite both;
+  z-index: 4;
+}
