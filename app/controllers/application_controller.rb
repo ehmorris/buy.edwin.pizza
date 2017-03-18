@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
         :description => discount ? DISCOUNT_PRICE_DESC : PRICE_DESC
       )
     rescue Stripe::CardError => e
-      render "_failure"
+      redirect_to failure_path
       return
     end
 
-    render "_success"
+    redirect_to success_path
   end
 end
