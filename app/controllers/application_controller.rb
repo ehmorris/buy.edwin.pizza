@@ -11,16 +11,10 @@ class ApplicationController < ActionController::Base
     @discount_price_desc = DISCOUNT_PRICE_DESC
   end
 
-  def success
-  end
-
-  def failure
-  end
-
   def charge
     Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
     token = params[:stripeToken]
-    discount = params[:discount]
+    discount = params[:discount] || false
 
     begin
       Stripe::Charge.create(
@@ -30,10 +24,10 @@ class ApplicationController < ActionController::Base
         :description => discount ? DISCOUNT_PRICE_DESC : PRICE_DESC
       )
     rescue Stripe::CardError => e
-      redirect_to failure_path
+      render "_failure"
       return
     end
 
-    redirect_to success_path
+    render "_success"
   end
 end
