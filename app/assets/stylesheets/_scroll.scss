@@ -1,4 +1,20 @@
-.scroll { }
+.scroll--inverted {
+  .scroll-blank_panel--black { background: #fff; }
+
+  .scroll-blank_panel--white { background: #000; }
+
+  .scroll-gradient--left_panel {
+    background-image: linear-gradient(to bottom, #fff, #000 33%);
+  }
+
+  .scroll-gradient--center_panel {
+    background-image: linear-gradient(to bottom, #fff 33%, #000 66%);
+  }
+
+  .scroll-gradient--right_panel {
+    background-image: linear-gradient(to bottom, #fff 66%, #000 100%);
+  }
+}
 
 .scroll-blank_panel { height: 100vh; }
 
