@@ -1,0 +1,26 @@
+.scroll { }
+
+.scroll-blank_panel { height: 100vh; }
+
+.scroll-blank_panel--black { background: #000; }
+
+.scroll-blank_panel--white { background: #fff; }
+
+.scroll-gradient_panel {
+  display: flex;
+  height: 600vh;
+}
+
+.scroll-gradient { flex: 1; }
+
+.scroll-gradient--left_panel {
+  background-image: linear-gradient(to bottom, #000, #fff 33%);
+}
+
+.scroll-gradient--center_panel {
+  background-image: linear-gradient(to bottom, #000 33%, #fff 66%);
+}
+
+.scroll-gradient--right_panel {
+  background-image: linear-gradient(to bottom, #000 66%, #fff 100%);
+}
