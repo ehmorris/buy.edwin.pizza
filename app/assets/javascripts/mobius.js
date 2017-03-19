@@ -9,34 +9,34 @@ $(function() {
     $('.scroll').toggleClass('scroll--inverted');
   };
 
-  let set_mobius_to_top = () => {
+  let set_mobius_to_top = (direction) => {
+    if (direction === 'up') return;
+
     $(document).scrollTop(trigger_height + safari_ui_height);
     invert_page();
   };
 
-  let set_mobius_to_bottom = () => {
+  let set_mobius_to_bottom = (direction) => {
+    if (direction === 'down') return;
+
     $(document).scrollTop(document_height - window_height - trigger_height - safari_ui_height);
     invert_page();
   };
 
-  let initialize_mobius = () => {
-    let bottom_trigger = new Waypoint.Inview({
-      element: $('#mobius_bottom_trigger')[0],
-      enter: set_mobius_to_top
-    });
+  let bottom_trigger = new Waypoint.Inview({
+    element: $('#mobius_bottom_trigger')[0],
+    enter: set_mobius_to_top
+  });
 
-    let top_trigger = new Waypoint.Inview({
-      element: $('#mobius_top_trigger')[0],
-      enter: set_mobius_to_bottom
-    });
-  };
+  let top_trigger = new Waypoint.Inview({
+    element: $('#mobius_top_trigger')[0],
+    enter: set_mobius_to_bottom
+  });
 
   let initialize_page = () => {
     $(document).scrollTop(window_height + trigger_height);
-  }
+  };
 
-  initialize_page();
-
-  window.setTimeout(initialize_mobius, 1000);
+  setTimeout(initialize_page, 0);
 });
 
