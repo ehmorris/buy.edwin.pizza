@@ -1,4 +1,6 @@
 $(function() {
+  if (!($('#mobius_top_trigger').length || $('#mobius_bottom_trigger').length)) return;
+
   let document_height = $(document).height();
   let window_height = $(window).height();
   let trigger_height = window_height;
