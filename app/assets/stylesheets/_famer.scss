@@ -2,10 +2,7 @@
 
 $column_layout_breakpoint: 700px;
 
-.famer {
-  margin: 6rem 0;
-  position: relative;
-}
+.famer { margin: 6rem 0; }
 
 .famer-name {
   font-size: 8.5vw;
@@ -13,50 +10,9 @@ $column_layout_breakpoint: 700px;
   line-height: 1;
   margin: 0;
   margin-left: -0.3em;
-  position: relative;
-  z-index: 1;
-}
-
-.famer-video_wrapper {
-  position: absolute;
-  right: 0;
-  top: 4rem;
-  z-index: 0;
-
-  @include if_narrower_than($column_layout_breakpoint) {
-    padding-top: 50vh;
-    top: 0;
-    z-index: 2;
-  }
-}
-
-.famer-video {
-  width: 70vw;
-}
-
-.famer-video--docked {
-  position: fixed;
-  right: 0;
-  top: 0;
-
-  @include if_narrower_than($column_layout_breakpoint) {
-    top: 50vh;
-  }
 }
 
 .famer-main {
-  margin: 0 10vw;
-  position: relative;
-  z-index: 1;
-
-  @include if_narrower_than($column_layout_breakpoint) {
-    margin: 0 1rem;
-  }
-
-  @include if_wider_than($column_layout_breakpoint) {
-    width: 35vw;
-  }
-
   img {
     display: block;
     margin: 1em 0;
