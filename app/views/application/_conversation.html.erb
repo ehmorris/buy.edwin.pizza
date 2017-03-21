@@ -6,6 +6,7 @@
         data-purchase-button
         data-price="<%= @price %>"
         data-desc="<%= @price_desc %>"
+        class="conversation-cta"
       >
         <%= video_tag "dangling_pizza.mp4",
           :size => "227x440",
@@ -74,8 +75,14 @@
         data-purchase-button-discount
         data-price="<%= @discount_price %>"
         data-desc="<%= @discount_price_desc %>"
+        class="conversation-cta"
       >
-        <img src="https://placehold.it/250x250" />
+        <%= video_tag "dangling_pizza_discount.mp4",
+          :size => "227x440",
+          :controls => false,
+          :loop => true,
+          :autoplay => true
+        %>
       </div>
     </div>
   </div>

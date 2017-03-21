@@ -27,11 +27,20 @@
   padding-top: 2rem;
   position: absolute;
   top: 0;
+  z-index: 1;
 }
 
 .conversation-pair--light {
   background: #fff;
   color: #000;
+}
+
+.conversation-cta {
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: -1;
 }
 
 .conversation-response {
