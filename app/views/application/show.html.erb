@@ -1,5 +1,15 @@
 <%= render partial: "conversation" %>
 
+<div class="scroll">
+  <div class="scroll-blank_panel scroll-blank_panel--black"></div>
+  <div class="scroll-gradient_panel">
+    <div class="scroll-gradient scroll-gradient--left_panel"></div>
+    <div class="scroll-gradient scroll-gradient--center_panel"></div>
+    <div class="scroll-gradient scroll-gradient--right_panel"></div>
+  </div>
+  <div class="scroll-blank_panel scroll-blank_panel--white"></div>
+</div>
+
 <div class="container_with_horizontal_padding">
   <%= render partial: "famers/stephen" %>
   <%= render partial: "famers/alex" %>
@@ -17,6 +27,11 @@
   <%= render partial: "famers/ali" %>
   <%= render partial: "famers/wylie" %>
   <%= render partial: "famers/aaron" %>
+</div>
+
+<div class="video video--hide">
+  <div class="video-cover"></div>
+  <div class="video-element" id="video_element"></div>
 </div>
 
 <%= render partial: "hidden_checkout_form" %>

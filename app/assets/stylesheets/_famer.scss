@@ -1,15 +1,18 @@
 @import 'imports/media_queries';
 
-$column_layout_breakpoint: 700px;
-
-.famer { margin: 6rem 0; }
+.famer {
+  padding-bottom: 50vh;
+}
 
 .famer-name {
-  font-size: 8.5vw;
+  align-items: flex-start;
+  color: #fff;
+  display: flex;
   font-weight: 700;
-  line-height: 1;
+  height: 50vh;
   margin: 0;
-  margin-left: -0.3em;
+  text-indent: -1.8em;
+  width: 100%;
 }
 
 .famer-main {
@@ -18,7 +21,7 @@ $column_layout_breakpoint: 700px;
     margin: 1em 0;
     max-width: 100%;
 
-    @include if_wider_than($column_layout_breakpoint) {
+    @include if_wider_than(700px) {
       transform-origin: left center;
       transition: all .2s;
 

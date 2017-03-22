@@ -12,5 +12,6 @@
     <%= yield %>
   </body>
   <%= javascript_include_tag "https://checkout.stripe.com/checkout.js", async: Rails.env.production? %>
+  <%= javascript_include_tag "https://www.youtube.com/iframe_api", async: Rails.env.production? %>
   <%= javascript_include_tag "application", async: Rails.env.production? %>
 </html>
