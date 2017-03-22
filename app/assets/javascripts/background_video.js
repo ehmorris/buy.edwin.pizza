@@ -137,18 +137,13 @@ $(function() {
   };
 
   let set_video_values = () => {
-    console.group('video_values');
     if (!video.container_height) {
-      console.log(`video.container_height = ${video.$container.height()}`);
       video.container_height = video.$container.height();
     }
 
     if (!video.container_top_offset) {
-      console.log(`video.container_top_offset = ${video.$container.offset().top}`);
       video.container_top_offset = video.$container.offset().top;
     }
-
-    console.groupEnd();
   };
 
   let seek_player = () => {
@@ -178,17 +173,13 @@ $(function() {
     let article_index = $('.famer').index($article);
     video = video_list[article_index];
 
-    console.log(`activate article ${article_index}, video ${video.id}`);
-
     if (!video.$container) {
       video.$container = $article;
     }
 
     if (!player_is_initialized && !player_being_initialized) {
       player_being_initialized = true;
-      console.log(`player being initialized with ${video.id}`);
       player = new_youtube_player('video_element', video.id, () => {
-        console.log('player done initializing');
         player_is_initialized = true;
         player_being_initialized = false;
         set_video_values();
@@ -200,7 +191,6 @@ $(function() {
         else unhide_video();
       });
     } else if (player_is_initialized && !player_being_initialized) {
-      console.log(`player.loadVideoById(${video.id})`);
       player.loadVideoById(video.id);
       set_video_values();
     }
