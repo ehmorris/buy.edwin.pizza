@@ -2,6 +2,9 @@
 
 .famer {
   padding-bottom: 50vh;
+  transition: opacity 2s;
+
+  .video_in_focus & { opacity: .3; }
 }
 
 .famer-name {
