@@ -3,7 +3,7 @@ $(function() {
     return setTimeout(() => { document.title = title; }, duration);
   };
 
-  let annoying_title = () => {
+  let title_sequence = () => {
     return [
       set_timed_title('hey', 0),
       set_timed_title('...', 3000),
@@ -24,13 +24,13 @@ $(function() {
   };
 
   let original_title = document.title;
-  let annoying_title_timeouts;
+  let title_sequence_timeout;
 
   $(document).on('visibilitychange', () => {
     if (!!document.hidden) {
-      annoying_title_timeouts = annoying_title();
-    } else {
-      clear_timeouts(annoying_title_timeouts);
+      title_sequence_timeout = title_sequence();
+    } else if (!!title_sequence_timeout) {
+      clear_timeouts(title_sequence_timeout);
       document.title = original_title;
     }
   });
