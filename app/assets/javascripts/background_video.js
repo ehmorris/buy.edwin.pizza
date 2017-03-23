@@ -209,4 +209,13 @@ $(function() {
       });
     });
   };
+
+  let load_youtube_api = () => {
+    let tag = document.createElement('script');
+    tag.src = '//www.youtube.com/iframe_api';
+    let firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  };
+
+  load_youtube_api();
 });
