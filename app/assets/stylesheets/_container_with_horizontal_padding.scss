@@ -1,8 +1,18 @@
+@import 'imports/media_queries';
+
 .container_with_horizontal_padding {
   box-sizing: border-box;
-  margin: auto;
-  max-width: 700px;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   width: 100%;
+
+  @include if_wider_than(400px) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  @include if_wider_than(860px) {
+    padding-left: calc((100% - 700px) / 2);
+    padding-right: calc((100% - 700px) / 2);
+  }
 }
