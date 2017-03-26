@@ -6,7 +6,7 @@ $(function() {
     loop: 0,
     playsinline: 0,
     controls: 0,
-    autoplay: 0,
+    autoplay: 0
   };
 
   let video_list = [{
