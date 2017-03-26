@@ -15,3 +15,9 @@
     @content
   }
 }
+
+@mixin if_narrower_than_and_shorter_than($breakpoint1, $breakpoint2) {
+  @media screen and (max-width: $breakpoint1 - 1) and (max-height: $breakpoint2 - 1) {
+    @content
+  }
+}

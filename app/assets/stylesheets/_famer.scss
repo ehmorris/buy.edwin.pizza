@@ -10,7 +10,7 @@
 .famer-name {
   align-items: flex-start;
   display: flex;
-  font-size: 12vw;
+  font-size: 2em;
   font-weight: 700;
   height: 50vh;
   line-height: 1.2;
@@ -23,14 +23,15 @@
   img {
     display: block;
     margin: 1em 0;
-    max-width: 100%;
+    width: 100%;
 
     @include if_wider_than(700px) {
-      transform-origin: left center;
+      margin-left: -10%;
       transition: all .2s;
+      width: 120%;
 
       &:hover {
-        transform: scale(2);
+        transform: scale(1.2);
         box-shadow: 0 .5em 1em rgba(0, 0, 0, .4);
         cursor: zoom-in;
       }
