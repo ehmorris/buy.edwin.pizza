@@ -10,5 +10,3 @@ gem 'jquery-rails', '~> 4.2.2'
 
 gem 'stripe', '~> 2.0.1'
 gem 'foreman'
-gem 'browser'
-gem 'rails_12factor'

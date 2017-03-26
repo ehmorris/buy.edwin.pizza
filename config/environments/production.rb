@@ -20,7 +20,16 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  config.public_file_server.enabled = true
+  # Disable serving static files from the `/public` folder by default since
+  # Apache or NGINX already handles this. See:
+  # https://devcenter.heroku.com/articles/getting-started-with-rails5#heroku-gems
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    logger = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
