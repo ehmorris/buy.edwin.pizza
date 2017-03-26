@@ -6,10 +6,11 @@
     <title>buy.edwin.pizza, please</title>
     <link href="//cloud.typography.com/7346032/619208/css/fonts.css" rel="stylesheet" type="text/css" />
     <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "application" %>
     <link href="/favicon.png" rel="icon" type="image/png" />
   </head>
   <body>
     <%= yield %>
   </body>
+  <%= javascript_include_tag "https://checkout.stripe.com/checkout.js", async: Rails.env.production? %>
+  <%= javascript_include_tag "application", async: Rails.env.production? %>
 </html>

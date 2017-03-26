@@ -1,20 +1,52 @@
-<div class="conversation_pane">
-  <%= render partial: "conversation/conversation" %>
+<%= render partial: "conversation" %>
+
+<div class="scroll">
+  <div class="scroll-blank_panel scroll-blank_panel--black"></div>
+  <div class="scroll-gradient_panel">
+    <div class="scroll-gradient scroll-gradient--left_panel"></div>
+    <div class="scroll-gradient scroll-gradient--center_panel"></div>
+    <div class="scroll-gradient scroll-gradient--right_panel"></div>
+  </div>
 </div>
 
-<%= render partial: "famers/stephen" %>
-<%= render partial: "famers/alex" %>
-<%= render partial: "famers/ben" %>
-<%= render partial: "famers/sam" %>
-<%= render partial: "famers/chrissy" %>
-<%= render partial: "famers/ben_orenstein" %>
-<%= render partial: "famers/joel" %>
-<%= render partial: "famers/mat" %>
-<%= render partial: "famers/slickk" %>
-<%= render partial: "famers/ilan" %>
-<%= render partial: "famers/chris" %>
-<%= render partial: "famers/milan" %>
-<%= render partial: "famers/jeff" %>
-<%= render partial: "famers/ali" %>
-<%= render partial: "famers/wylie" %>
-<%= render partial: "famers/aaron" %>
+<div id="intermediary_message" class="intermediary_message container_with_horizontal_padding">
+  <p>These are all the people who bought me pizza.</p>
+</div>
+
+<div class="scroll scroll--inverted">
+  <div class="scroll-gradient_panel scroll-gradient_panel--mini">
+    <div class="scroll-gradient scroll-gradient--left_panel"></div>
+    <div class="scroll-gradient scroll-gradient--center_panel"></div>
+    <div class="scroll-gradient scroll-gradient--right_panel"></div>
+  </div>
+</div>
+
+<div class="container_with_horizontal_padding">
+  <%= render partial: "famers/stephen" %>
+  <%= render partial: "famers/alex" %>
+  <%= render partial: "famers/ben" %>
+  <%= render partial: "famers/sam" %>
+  <%= render partial: "famers/chrissy" %>
+  <%= render partial: "famers/ben_orenstein" %>
+  <%= render partial: "famers/joel" %>
+  <%= render partial: "famers/mat" %>
+  <%= render partial: "famers/slickk" %>
+  <%= render partial: "famers/ilan" %>
+  <%= render partial: "famers/chris" %>
+  <%= render partial: "famers/milan" %>
+  <%= render partial: "famers/jeff" %>
+  <%= render partial: "famers/ali" %>
+  <%= render partial: "famers/wylie" %>
+  <%= render partial: "famers/aaron" %>
+</div>
+
+<div class="scroll">
+  <div class="scroll-blank_panel scroll-blank_panel--black"></div>
+</div>
+
+<div class="video video--hide">
+  <div class="video-cover"></div>
+  <div class="video-element" id="video_element"></div>
+</div>
+
+<%= render partial: "hidden_checkout_form" %>

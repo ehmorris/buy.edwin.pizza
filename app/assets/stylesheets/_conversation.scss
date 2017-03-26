@@ -1,30 +1,55 @@
-.conversation_pane {
-  height: 75vh;
-  width: 100%;
-}
+@keyframes fade_up {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
 
-.conversation {
-  box-sizing: border-box;
-  padding: 0 1rem;
-  margin: 0 auto;
-
-  @include if_wider_than(500px) { max-width: 65vw; }
-
-  @include if_narrower_than(500px) {
-    font-size: 1rem;
-    padding: 0 calc(1rem + 14vw) 1rem 1rem;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.conversation {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
 .conversation-pair {
-  margin: 2rem 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  left: 0;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.conversation-pair--light {
+  background: #fff;
+  color: #000;
+}
+
+.conversation-cta {
+  left: 50%;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: -1;
 }
 
 .conversation-response {
-  @include animation(fade-up .3s ease both);
-  @include animation-delay(.5s);
-  margin-right: -14vw;
-  overflow: auto;
-  padding-bottom: .1em;
-  text-align: right;
+  animation: fade_up .3s ease both;
+  animation-delay: .5s;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 3rem 0;
 }
+
+.conversation-response-link { text-decoration: underline; }

@@ -1,8 +1,8 @@
 /*!
-Waypoints - 4.0.0
-Copyright © 2011-2015 Caleb Troughton
+Waypoints - 4.0.1
+Copyright © 2011-2016 Caleb Troughton
 Licensed under the MIT license.
-https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
+https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 */
 (function() {
   'use strict'
@@ -121,7 +121,11 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   /* Public */
   /* http://imakewebthings.com/waypoints/api/enable-all */
   Waypoint.enableAll = function() {
-    Waypoint.invokeAll('enable')
+    Waypoint.Context.refreshAll()
+    for (var waypointKey in allWaypoints) {
+      allWaypoints[waypointKey].enabled = true
+    }
+    return this
   }
 
   /* Public */
@@ -196,6 +200,10 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     element.waypointContextKey = this.key
     contexts[element.waypointContextKey] = this
     keyCounter += 1
+    if (!Waypoint.windowContext) {
+      Waypoint.windowContext = true
+      Waypoint.windowContext = new Context(window)
+    }
 
     this.createThrottledScrollHandler()
     this.createThrottledResizeHandler()
@@ -212,7 +220,8 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
   Context.prototype.checkEmpty = function() {
     var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
     var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
-    if (horizontalEmpty && verticalEmpty) {
+    var isWindow = this.element == this.element.window
+    if (horizontalEmpty && verticalEmpty && !isWindow) {
       this.adapter.off('.waypoints')
       delete contexts[this.key]
     }
@@ -281,6 +290,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
       for (var waypointKey in this.waypoints[axisKey]) {
         var waypoint = this.waypoints[axisKey][waypointKey]
+        if (waypoint.triggerPoint === null) {
+          continue
+        }
         var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
         var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
         var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
@@ -400,7 +412,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
         }
 
         contextModifier = axis.contextScroll - axis.contextOffset
-        waypoint.triggerPoint = elementOffset + contextModifier - adjustment
+        waypoint.triggerPoint = Math.floor(elementOffset + contextModifier - adjustment)
         wasBeforeScroll = oldTriggerPoint < axis.oldScroll
         nowAfterScroll = waypoint.triggerPoint >= axis.oldScroll
         triggeredBackward = wasBeforeScroll && nowAfterScroll
@@ -454,6 +466,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
     }
     Context.refreshAll()
   }
+
 
   Waypoint.requestAnimationFrame = function(callback) {
     var requestFn = window.requestAnimationFrame ||
@@ -572,78 +585,174 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 ;(function() {
   'use strict'
 
-  var $ = window.jQuery
   var Waypoint = window.Waypoint
 
-  function JQueryAdapter(element) {
-    this.$element = $(element)
+  function isWindow(element) {
+    return element === element.window
   }
 
-  $.each([
-    'innerHeight',
-    'innerWidth',
-    'off',
-    'offset',
-    'on',
-    'outerHeight',
-    'outerWidth',
-    'scrollLeft',
-    'scrollTop'
-  ], function(i, method) {
-    JQueryAdapter.prototype[method] = function() {
-      var args = Array.prototype.slice.call(arguments)
-      return this.$element[method].apply(this.$element, args)
+  function getWindow(element) {
+    if (isWindow(element)) {
+      return element
     }
-  })
+    return element.defaultView
+  }
 
-  $.each([
-    'extend',
-    'inArray',
-    'isEmptyObject'
-  ], function(i, method) {
-    JQueryAdapter[method] = $[method]
-  })
+  function NoFrameworkAdapter(element) {
+    this.element = element
+    this.handlers = {}
+  }
 
-  Waypoint.adapters.push({
-    name: 'jquery',
-    Adapter: JQueryAdapter
-  })
-  Waypoint.Adapter = JQueryAdapter
-}())
-;(function() {
-  'use strict'
+  NoFrameworkAdapter.prototype.innerHeight = function() {
+    var isWin = isWindow(this.element)
+    return isWin ? this.element.innerHeight : this.element.clientHeight
+  }
 
-  var Waypoint = window.Waypoint
+  NoFrameworkAdapter.prototype.innerWidth = function() {
+    var isWin = isWindow(this.element)
+    return isWin ? this.element.innerWidth : this.element.clientWidth
+  }
 
-  function createExtension(framework) {
-    return function() {
-      var waypoints = []
-      var overrides = arguments[0]
+  NoFrameworkAdapter.prototype.off = function(event, handler) {
+    function removeListeners(element, listeners, handler) {
+      for (var i = 0, end = listeners.length - 1; i < end; i++) {
+        var listener = listeners[i]
+        if (!handler || handler === listener) {
+          element.removeEventListener(listener)
+        }
+      }
+    }
 
-      if (framework.isFunction(arguments[0])) {
-        overrides = framework.extend({}, arguments[1])
-        overrides.handler = arguments[0]
+    var eventParts = event.split('.')
+    var eventType = eventParts[0]
+    var namespace = eventParts[1]
+    var element = this.element
+
+    if (namespace && this.handlers[namespace] && eventType) {
+      removeListeners(element, this.handlers[namespace][eventType], handler)
+      this.handlers[namespace][eventType] = []
+    }
+    else if (eventType) {
+      for (var ns in this.handlers) {
+        removeListeners(element, this.handlers[ns][eventType] || [], handler)
+        this.handlers[ns][eventType] = []
+      }
+    }
+    else if (namespace && this.handlers[namespace]) {
+      for (var type in this.handlers[namespace]) {
+        removeListeners(element, this.handlers[namespace][type], handler)
+      }
+      this.handlers[namespace] = {}
+    }
+  }
+
+  /* Adapted from jQuery 1.x offset() */
+  NoFrameworkAdapter.prototype.offset = function() {
+    if (!this.element.ownerDocument) {
+      return null
+    }
+
+    var documentElement = this.element.ownerDocument.documentElement
+    var win = getWindow(this.element.ownerDocument)
+    var rect = {
+      top: 0,
+      left: 0
+    }
+
+    if (this.element.getBoundingClientRect) {
+      rect = this.element.getBoundingClientRect()
+    }
+
+    return {
+      top: rect.top + win.pageYOffset - documentElement.clientTop,
+      left: rect.left + win.pageXOffset - documentElement.clientLeft
+    }
+  }
+
+  NoFrameworkAdapter.prototype.on = function(event, handler) {
+    var eventParts = event.split('.')
+    var eventType = eventParts[0]
+    var namespace = eventParts[1] || '__default'
+    var nsHandlers = this.handlers[namespace] = this.handlers[namespace] || {}
+    var nsTypeList = nsHandlers[eventType] = nsHandlers[eventType] || []
+
+    nsTypeList.push(handler)
+    this.element.addEventListener(eventType, handler)
+  }
+
+  NoFrameworkAdapter.prototype.outerHeight = function(includeMargin) {
+    var height = this.innerHeight()
+    var computedStyle
+
+    if (includeMargin && !isWindow(this.element)) {
+      computedStyle = window.getComputedStyle(this.element)
+      height += parseInt(computedStyle.marginTop, 10)
+      height += parseInt(computedStyle.marginBottom, 10)
+    }
+
+    return height
+  }
+
+  NoFrameworkAdapter.prototype.outerWidth = function(includeMargin) {
+    var width = this.innerWidth()
+    var computedStyle
+
+    if (includeMargin && !isWindow(this.element)) {
+      computedStyle = window.getComputedStyle(this.element)
+      width += parseInt(computedStyle.marginLeft, 10)
+      width += parseInt(computedStyle.marginRight, 10)
+    }
+
+    return width
+  }
+
+  NoFrameworkAdapter.prototype.scrollLeft = function() {
+    var win = getWindow(this.element)
+    return win ? win.pageXOffset : this.element.scrollLeft
+  }
+
+  NoFrameworkAdapter.prototype.scrollTop = function() {
+    var win = getWindow(this.element)
+    return win ? win.pageYOffset : this.element.scrollTop
+  }
+
+  NoFrameworkAdapter.extend = function() {
+    var args = Array.prototype.slice.call(arguments)
+
+    function merge(target, obj) {
+      if (typeof target === 'object' && typeof obj === 'object') {
+        for (var key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            target[key] = obj[key]
+          }
+        }
       }
 
-      this.each(function() {
-        var options = framework.extend({}, overrides, {
-          element: this
-        })
-        if (typeof options.context === 'string') {
-          options.context = framework(this).closest(options.context)[0]
-        }
-        waypoints.push(new Waypoint(options))
-      })
-
-      return waypoints
+      return target
     }
+
+    for (var i = 1, end = args.length; i < end; i++) {
+      merge(args[0], args[i])
+    }
+    return args[0]
   }
 
-  if (window.jQuery) {
-    window.jQuery.fn.waypoint = createExtension(window.jQuery)
+  NoFrameworkAdapter.inArray = function(element, array, i) {
+    return array == null ? -1 : array.indexOf(element, i)
   }
-  if (window.Zepto) {
-    window.Zepto.fn.waypoint = createExtension(window.Zepto)
+
+  NoFrameworkAdapter.isEmptyObject = function(obj) {
+    /* eslint no-unused-vars: 0 */
+    for (var name in obj) {
+      return false
+    }
+    return true
   }
+
+  Waypoint.adapters.push({
+    name: 'noframework',
+    Adapter: NoFrameworkAdapter
+  })
+  Waypoint.Adapter = NoFrameworkAdapter
 }())
 ;

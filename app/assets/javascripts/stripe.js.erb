@@ -1,0 +1,38 @@
+$(function() {
+  let discount = false;
+  let $checkout_form = $('#hidden_checkout_form');
+  let $discount_input = $checkout_form.children('[name=discount]');
+  let $token_input = $checkout_form.children('[name=stripeToken]');
+
+  let prepare_discount_input = () => {
+    if (discount) {
+      $discount_input.prop("disabled", false);
+      $discount_input.val(discount);
+    } else {
+      $discount_input.prop("disabled", true);
+    }
+  };
+
+  let handler = StripeCheckout.configure({
+    locale: 'auto',
+    key: '<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>',
+    token: (token) => {
+      prepare_discount_input();
+      $token_input.val(token.id);
+      $checkout_form.submit();
+    }
+  });
+
+  $('[data-purchase-button]').on('click', (e) => {
+    let checkout_button_data = $(e.currentTarget).data();
+
+    discount = 'purchaseButtonDiscount' in checkout_button_data;
+
+    handler.open({
+      name: 'buy.edwin.pizza',
+      description: checkout_button_data.desc,
+      amount: checkout_button_data.price,
+      allowRememberMe: false
+    });
+  });
+});
