@@ -8,14 +8,15 @@
         data-desc="<%= @price_desc %>"
         class="conversation-cta"
       >
-        <%= video_tag "dangling_pizza.mp4",
-          :size => "227x440",
-          :controls => false,
-          :loop => true,
-          :autoplay => true,
-          :playsinline => true,
-          :preload => "auto"
-        %>
+        <video
+          src="<%= s3_url('dangling_pizza.mp4') %>"
+          width="227"
+          height="440"
+          muted
+          autoplay
+          loop
+          playsinline
+        ></video>
       </div>
     </div>
     <div>
@@ -79,14 +80,15 @@
         data-desc="<%= @discount_price_desc %>"
         class="conversation-cta"
       >
-        <%= video_tag "dangling_pizza_discount.mp4",
-          :size => "227x440",
-          :controls => false,
-          :loop => true,
-          :autoplay => true,
-          :playsinline => true,
-          :preload => "auto"
-        %>
+        <video
+          src="<%= s3_url('dangling_pizza_discount.mp4') %>"
+          width="227"
+          height="440"
+          muted
+          autoplay
+          loop
+          playsinline
+        ></video>
       </div>
     </div>
     <div>

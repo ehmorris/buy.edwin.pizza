@@ -1,4 +1,4 @@
-copy `.sample.env` to `.env` and setup your real `STRIPE_SECRET_KEY` and `STRIPE_PUBLISHABLE_KEY` variables
+copy `.sample.env` to `.env` and setup your real values
 
 run the server like this: `foreman start`
 
