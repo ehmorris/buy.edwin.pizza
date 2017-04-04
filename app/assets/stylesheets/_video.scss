@@ -1,19 +1,20 @@
 @import 'imports/media_queries';
+@import 'imports/z_index_map';
 
 .video {
+  @include z-index(video);
   bottom: 0;
   left: 0;
   opacity: .6;
   position: fixed;
   right: 0;
   top: 0;
-  transition: opacity 2s;
-  z-index: -1;
 }
 
 .video--hide { transform: translateX(-100%); }
 
 .video-cover {
+  @include z-index(video_context, cover);
   border-color: #000;
   border-style: solid;
   border-width: 10vh 0;
@@ -23,7 +24,6 @@
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 2;
 
   @include if_narrower_than_and_shorter_than(650px, 500px) {
     border-width: 2vh 0;
@@ -34,10 +34,10 @@ $border_size: 3rem;
 $tiny_border_size: 1.5rem;
 
 .video-element {
+  @include z-index(video_context, element);
   height: 100%;
   margin: 0 $border_size;
   width: calc(100% - #{$border_size * 2});
-  z-index: 1;
 
   @include if_narrower_than(700px) {
     margin: 0 $tiny_border_size;

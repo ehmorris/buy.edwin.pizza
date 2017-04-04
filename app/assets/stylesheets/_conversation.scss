@@ -1,3 +1,5 @@
+@import 'imports/z_index_map';
+
 @keyframes fade_up {
   0% {
     opacity: 0;
@@ -17,6 +19,7 @@
 }
 
 .conversation-pair {
+  @include z-index(conversation_pair);
   background: #000;
   display: flex;
   flex-direction: column;
@@ -27,7 +30,6 @@
   padding-top: 2rem;
   position: absolute;
   top: 0;
-  z-index: 1;
 }
 
 .conversation-pair--light {
@@ -35,12 +37,12 @@
   color: #000;
 }
 
-.conversation-cta {
+.conversation-pair-cta {
+  @include z-index(conversation_pair_context, cta);
   left: 50%;
   position: absolute;
   top: 0;
   transform: translateX(-50%);
-  z-index: -1;
 }
 
 .conversation-response {
