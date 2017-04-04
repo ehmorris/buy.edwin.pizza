@@ -111,18 +111,9 @@ $(function() {
   let player_is_initialized, player_being_initialized = false;
   let video = null;
   let new_video_loaded = false;
-  let scrolling_stopped = null;
 
   let clip_number = (n) => {
     return Math.min(Math.max(n, .01), .99);
-  };
-
-  let activate_focus_mode = () => {
-    $('body').addClass('video_in_focus');
-  };
-
-  let deactivate_focus_mode = () => {
-    $('body').removeClass('video_in_focus');
   };
 
   let new_youtube_player = (element_id, video_id, callback, on_state_change) => {
@@ -153,10 +144,6 @@ $(function() {
       clip_number(element_scroll_distance / video.container_height);
 
     player.seekTo(video.duration * percent_scrolled, true);
-
-    activate_focus_mode();
-    if (scrolling_stopped) window.clearTimeout(scrolling_stopped);
-    scrolling_stopped = window.setTimeout(deactivate_focus_mode, 300);
   };
 
   let hide_video = () => {
