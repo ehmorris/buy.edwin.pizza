@@ -5,7 +5,8 @@
   @include z-index(video);
   bottom: 0;
   left: 0;
-  opacity: .6;
+  mix-blend-mode: exclusion;
+  pointer-events: none;
   position: fixed;
   right: 0;
   top: 0;
