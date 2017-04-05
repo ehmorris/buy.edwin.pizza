@@ -1,13 +1,12 @@
+@import 'imports/z_index_map';
 @import 'imports/media_queries';
 
 .famer {
   padding-bottom: 50vh;
-  transition: opacity 2s;
-
-  .video_in_focus & { opacity: .3; }
 }
 
 .famer-name {
+  @include z-index(famer_name);
   align-items: flex-start;
   display: flex;
   font-size: 2em;
@@ -15,11 +14,15 @@
   height: 50vh;
   line-height: 1.2;
   margin: 0;
+  position: relative;
   text-indent: -1em;
   width: 100%;
 }
 
 .famer-main {
+  @include z-index(famer_main);
+  position: relative;
+
   img {
     display: block;
     margin: 1em 0;

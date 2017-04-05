@@ -1,0 +1,25 @@
+$layers: (
+  famer_name: 1,
+
+  video: 2,
+  video_context: (
+    element: 1,
+    cover: 2
+  ),
+
+  famer_main: 3,
+
+  conversation_pair: 4,
+  conversation_pair_context: (
+    cta: -1
+  )
+);
+
+@mixin z-index($layer_or_context, $sub_layer: false) {
+  @if $sub_layer {
+    $context: map-get($layers, $layer_or_context);
+    z-index: map-get($context, $sub_layer);
+  } @else {
+    z-index: map-get($layers, $layer_or_context);
+  }
+}
