@@ -184,8 +184,6 @@ $(function() {
   };
 
   window.onYouTubeIframeAPIReady = () => {
-    activate_article_video($('.famer').first());
-
     $('.famer').each((_, article) => {
       let article_trigger = new Waypoint.Inview({
         element: article,
