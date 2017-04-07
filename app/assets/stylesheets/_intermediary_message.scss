@@ -1,7 +1,11 @@
+@import 'imports/z_index_map';
+
 .intermediary_message {
+  @include z-index(intermediary_message);
   background: #fff;
   color: #000;
   font-weight: bold;
   padding-bottom: 30vh;
   padding-top: 30vh;
+  position: relative;
 }

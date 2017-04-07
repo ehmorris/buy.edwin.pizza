@@ -1,3 +1,10 @@
+@import 'imports/z_index_map';
+
+.scroll {
+  @include z-index(scroll);
+  position: relative;
+}
+
 .scroll--inverted {
   .scroll-blank_panel--black { background: #fff; }
 
