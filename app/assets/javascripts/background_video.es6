@@ -105,6 +105,12 @@ $(function() {
     $container: null,
     container_height: null,
     container_top_offset: null
+  }, {
+    id: 'IAbgiagJKlw',
+    duration: 1024,
+    $container: null,
+    container_height: null,
+    container_top_offset: null
   }];
 
   let player = null;
