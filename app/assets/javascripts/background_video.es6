@@ -172,9 +172,10 @@ $(function() {
 
     if (!player_is_initialized && !player_being_initialized) {
       player_being_initialized = true;
-      player = new_youtube_player('video_element', video.id, () => {
+      player = new_youtube_player('video_element', video.id, ({target: embed_object}) => {
         player_is_initialized = true;
         player_being_initialized = false;
+        embed_object.mute();
         set_video_values();
         window.addEventListener('scroll', seek_player);
       }, ({data: state}) => {
