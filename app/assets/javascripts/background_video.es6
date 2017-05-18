@@ -111,7 +111,7 @@ $(function() {
     $container: null,
     container_height: null,
     container_top_offset: null
-  }];
+  }].reverse();
 
   let player = null;
   let player_is_initialized, player_being_initialized = false;
