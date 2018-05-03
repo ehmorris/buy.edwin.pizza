@@ -4,7 +4,8 @@ $(function() {
     rel: 0,
     showinfo: 0,
     loop: 0,
-    playsinline: 0,
+    playsinline: 1,
+    autoplay: 1,
     controls: 0,
     autoplay: 0
   };
