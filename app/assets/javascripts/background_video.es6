@@ -181,9 +181,7 @@ $(function() {
         window.addEventListener('scroll', seek_player);
       }, ({data: state}) => {
         let ended = 0, unstarted = -1;
-
-        if (state === ended || state === unstarted) hide_video();
-        else unhide_video();
+        state === ended || state === unstarted ? hide_video() : unhide_video();
       });
     } else if (player_is_initialized && !player_being_initialized) {
       player.loadVideoById(video.id);
