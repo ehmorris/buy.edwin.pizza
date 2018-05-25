@@ -43,6 +43,7 @@
   position: absolute;
   top: 0;
   transform: translateX(-50%);
+  &:hover { cursor: pointer; }
 }
 
 .conversation-response {
