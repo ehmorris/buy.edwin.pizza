@@ -23,6 +23,10 @@
   @include z-index(famer_main);
   position: relative;
 
+  .fluid-width-video-wrapper:first-child {
+    margin-bottom: 40vh;
+  }
+
   img {
     display: block;
     margin: 1em 0;
